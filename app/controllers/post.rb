@@ -5,5 +5,5 @@ end
 
 get '/posts/:id' do |id|
   @comment = Comment.find(id)
-  @comment.text
+  erb :post
 end
