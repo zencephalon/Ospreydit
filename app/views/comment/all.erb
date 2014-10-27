@@ -1,0 +1,3 @@
+<% @comments.each do |comment_from_index| %>
+  <%= erb :'comment/single', locals: {comment: comment_from_index} %>
+<% end %>
