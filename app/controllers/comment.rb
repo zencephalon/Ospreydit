@@ -9,7 +9,7 @@ get '/comments/:id' do |id|
 end
 
 post '/comments' do
-  Comment.create(text: params[:text])
+  Comment.create(params[:comment])
 
   redirect to('/comments/all')
 end
