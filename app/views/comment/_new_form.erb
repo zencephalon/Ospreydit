@@ -1,14 +1,6 @@
 <div class="comment_form">
   <form action="/comment" method="POST">
-    Comment: 
-    <br>
-    <textarea name="comment[text]"></textarea>
-    <br>
-    Username: 
-    <br>
-    <input name="comment[username]" type="text">
-    <br>
     <input name="comment[sub_id]" type="hidden" value="<%= sub.id %>">
-    <input type="submit">
+    <%= erb :'comment/_form_inputs', locals: {comment: Comment.new} %>
   </form>
 </div>
