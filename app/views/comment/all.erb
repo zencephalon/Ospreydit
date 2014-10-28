@@ -1,3 +1,9 @@
 <% @comments.each do |comment_from_index| %>
   <%= erb :'comment/single', locals: {comment: comment_from_index} %>
 <% end %>
+
+<form action="/comments" method="POST">
+  <textarea name="text"></textarea>
+  <br>
+  <input type="submit">
+</form>
