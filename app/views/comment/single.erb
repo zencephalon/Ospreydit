@@ -1,11 +1,19 @@
 <div class="comment">
-  <h1><%= comment.id %></h1>
-  <p><%= comment.text %></p>
-  <p>written by <%= comment.username %></p>
+  <div class="comment_buttons">
   <form action="/comment/<%= comment.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
   </form>
-  <br>
   <a href="/comment/<%= comment.id %>/edit">Edit</a>
+  </div>
+  <h1><%= comment.id %></h1>
+  <p><%= comment.text %></p>
+  <p>written by <%= comment.username %></p>
+  <% unless comment.children.empty? %>
+  <ol class="children">
+    <% comment.children.each do |child| %>
+      <li><%= erb :'/comment/single', locals: {comment: child} %></li>
+    <% end %>
+  </ol>
+  <% end %>
 </div>
