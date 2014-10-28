@@ -13,3 +13,18 @@ post '/comments' do
 
   redirect to('/comments/all')
 end
+
+delete '/comments/:id' do |id|
+  @comment = Comment.find(id)
+  @comment.destroy
+
+  redirect to('/comments/all')
+end
+
+get '/comments/:id/edit' do |id|
+  @comment = Comment.find(id)
+end
+
+put '/comments/:id' do
+  Comment.update(params)
+end
