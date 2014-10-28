@@ -1,18 +1,19 @@
 before '/sub/:id' do |id|
-  @sub = sub.find(id)
+  @sub = Sub.find(id)
 end
 
 get '/subs' do
-  @subs = sub.all
+  @subs = Sub.all
   erb :'sub/all'
 end
 
 get '/sub/:id' do |id|
-  erb :'sub/single', locals: {sub: @sub}
+  @comments = @sub.comments
+  erb :'comment/all'
 end
 
 post '/sub' do
-  sub.create(params[:sub])
+  Sub.create(params[:sub])
 
   redirect to('/subs')
 end

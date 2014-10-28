@@ -14,7 +14,7 @@ end
 post '/comment' do
   Comment.create(params[:comment])
 
-  redirect to('/comments')
+  redirect to("/sub/#{params[:comment][:sub_id]}")
 end
 
 delete '/comment/:id' do |id|

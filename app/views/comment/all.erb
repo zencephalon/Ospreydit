@@ -1,5 +1,5 @@
-<% @comments.each do |comment_from_index| %>
-  <%= erb :'comment/single', locals: {comment: comment_from_index} %>
+<% @comments.each do |comment| %>
+  <%= erb :'comment/single', locals: {comment: comment} %>
 <% end %>
 
-<%= erb :'comment/_new_form' %>
+<%= erb :'comment/_new_form', locals: {sub: @sub} %>

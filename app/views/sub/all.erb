@@ -1,0 +1,5 @@
+<ol>
+  <% @subs.each do |sub| %>
+    <li><a href="/sub/<%= sub.id %>"><%= sub.name %></a></li>
+  <% end %>
+</ol>
