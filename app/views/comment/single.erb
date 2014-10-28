@@ -2,10 +2,10 @@
   <h1><%= comment.id %></h1>
   <p><%= comment.text %></p>
   <p>written by <%= comment.username %></p>
-  <form action="/comments/<%= comment.id %>" method="POST">
+  <form action="/comment/<%= comment.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
   </form>
   <br>
-  <a href="/comments/<%= comment.id %>/edit">Edit</a>
+  <a href="/comment/<%= comment.id %>/edit">Edit</a>
 </div>

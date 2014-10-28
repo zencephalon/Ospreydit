@@ -1,35 +1,36 @@
-get '/comments/all' do
+before '/comment/:id' do |id|
+  @comment = Comment.find(id)
+end
+
+get '/comments' do
   @comments = Comment.all
   erb :'comment/all'
 end
 
-get '/comments/:id' do |id|
-  @comment = Comment.find(id)
+get '/comment/:id' do |id|
   erb :'comment/single', locals: {comment: @comment}
 end
 
-post '/comments' do
+post '/comment' do
   Comment.create(params[:comment])
 
-  redirect to('/comments/all')
+  redirect to('/comments')
 end
 
-delete '/comments/:id' do |id|
-  @comment = Comment.find(id)
+delete '/comment/:id' do |id|
   @comment.destroy
 
-  redirect to('/comments/all')
+  redirect to('/comments')
 end
 
-get '/comments/:id/edit' do |id|
+get '/comment/:id/edit' do |id|
   @comment = Comment.find(id)
 
   erb :'comment/_update_form', locals: {comment: @comment}
 end
 
-put '/comments/:id' do |id|
-  @comment = Comment.find(id)
+put '/comment/:id' do |id|
   @comment.update(params[:comment])
 
-  redirect to("/comments/#{id}")
+  redirect to("/comment/#{id}")
 end
