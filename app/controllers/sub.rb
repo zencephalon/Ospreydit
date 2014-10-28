@@ -23,15 +23,3 @@ delete '/sub/:id' do |id|
 
   redirect to('/subs')
 end
-
-get '/sub/:id/edit' do |id|
-  @sub = sub.find(id)
-
-  erb :'sub/_update_form', locals: {sub: @sub}
-end
-
-put '/sub/:id' do |id|
-  @sub.update(params[:sub])
-
-  redirect to("/sub/#{id}")
-end

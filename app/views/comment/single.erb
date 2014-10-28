@@ -9,6 +9,7 @@
   <h1><%= comment.id %></h1>
   <p><%= comment.text %></p>
   <p>written by <%= comment.username %></p>
+  
   <% unless comment.children.empty? %>
   <ol class="children">
     <% comment.children.each do |child| %>
