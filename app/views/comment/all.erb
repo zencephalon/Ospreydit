@@ -2,4 +2,6 @@
   <%= erb :'comment/single', locals: {comment: comment} %>
 <% end %>
 
+<% if @sub %>
 <%= erb :'comment/_new_form', locals: {sub: @sub} %>
+<% end %>
