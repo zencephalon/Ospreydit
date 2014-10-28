@@ -23,8 +23,13 @@ end
 
 get '/comments/:id/edit' do |id|
   @comment = Comment.find(id)
+
+  erb :'comment/_update_form', locals: {comment: @comment}
 end
 
-put '/comments/:id' do
-  Comment.update(params)
+put '/comments/:id' do |id|
+  @comment = Comment.find(id)
+  @comment.update(params[:comment])
+
+  redirect to("/comments/#{id}")
 end

@@ -1,0 +1,14 @@
+<div class="comment_form">
+  <form action="/comments/<%= comment.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    Comment: 
+    <br>
+    <textarea name="comment[text]"><%= comment.text %></textarea>
+    <br>
+    Username: 
+    <br>
+    <input name="comment[username]" type="text" value="<%= comment.username %>">
+    <br>
+    <input type="submit">
+  </form>
+</div>
