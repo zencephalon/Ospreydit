@@ -70,3 +70,7 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+
+.comment_buttons {
+    float: right;
+}
