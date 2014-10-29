@@ -37,5 +37,5 @@ end
 
 # Voting!
 post '/comment/:id/vote' do |id|
-
+  @comment.vote(current_user)
 end
