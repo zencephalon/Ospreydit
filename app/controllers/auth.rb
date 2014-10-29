@@ -33,6 +33,6 @@ post '/signup' do
     session[:user_id] = user.id
     redirect to('/')
   else
-    # display an error message and have them try again
+    redirect to ("/signup?error=Passwords do not match&name=#{params[:user][:name]}")
   end
 end

@@ -1,6 +1,9 @@
 <form action="/signup" method="POST">
+  <% if params[:error] %>
+    <p>Error: <%= params[:error] %></p>
+  <% end %>
   Username: <br>
-  <input type="text" name="user[name]">
+  <input type="text" name="user[name]" value="<%= params[:name] %>">
   <br>Password: <br>
   <input type="password" name="user[password]">
   <br>Password Again: <br>
