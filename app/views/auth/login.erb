@@ -1,7 +1,5 @@
 <form action="/login" method="POST">
-  <% if params[:error] %>
-    <p>Error: <%= params[:error] %></p>
-  <% end %>
+  <%= display_error %>
   Username: <br>
   <input type="text" name="name">
   <br>Password: <br>

@@ -37,5 +37,10 @@ end
 
 # Voting!
 post '/comment/:id/vote' do |id|
-  @comment.vote(current_user)
+  error = ""
+  unless @comment.vote(current_user)
+    error = "U've already voted on this, cheater."
+  end
+
+  redirect to("/comment/#{@comment.id}?error=#{error}")
 end

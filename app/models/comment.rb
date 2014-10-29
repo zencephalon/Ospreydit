@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
   has_many :children, class_name: "Comment", foreign_key: :parent_id
 
   has_many :votes
-  has_many :voters, through: :votes, class_name: "User", foreign_key: :user_id 
+  has_many :voters, through: :votes, class_name: "User", source: :user
 
   def vote(user)
     if self.voters.include?(user)
@@ -13,5 +13,9 @@ class Comment < ActiveRecord::Base
       self.votes.create(user: user)
       return true
     end
+  end
+
+  def score
+    self.votes.size
   end
 end
