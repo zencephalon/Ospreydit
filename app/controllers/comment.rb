@@ -1,5 +1,7 @@
-before '/comment/:id' do |id|
-  @comment = Comment.find(id)
+['/comment/:id', '/comment/:id/edit', '/comment/:id/vote'].each do |route|
+  before route do |id|
+    @comment = Comment.find(id)
+  end
 end
 
 get '/comments' do
@@ -24,8 +26,6 @@ delete '/comment/:id' do |id|
 end
 
 get '/comment/:id/edit' do |id|
-  @comment = Comment.find(id)
-
   erb :'comment/_update_form', locals: {comment: @comment}
 end
 
@@ -33,4 +33,9 @@ put '/comment/:id' do |id|
   @comment.update(params[:comment])
 
   redirect to("/comment/#{id}")
+end
+
+# Voting!
+post '/comment/:id/vote' do |id|
+
 end
