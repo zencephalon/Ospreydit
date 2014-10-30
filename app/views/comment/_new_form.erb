@@ -1,6 +1,8 @@
-<div class="comment_form">
-  <form action="/comment" method="POST">
-    <input name="comment[sub_id]" type="hidden" value="<%= sub.id %>">
-    <%= erb :'comment/_form_inputs', locals: {comment: Comment.new} %>
-  </form>
-</div>
+<% if current_user %>
+  <div class="comment_form">
+    <form action="/comment" method="POST">
+      <input name="comment[sub_id]" type="hidden" value="<%= sub.id %>">
+      <%= erb :'comment/_form_inputs', locals: {comment: Comment.new} %>
+    </form>
+  </div>
+<% end %>
