@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :parent, class_name: "Comment", foreign_key: :parent_id
   has_many :children, class_name: "Comment", foreign_key: :parent_id
 
+  belongs_to :user
+
   has_many :votes
   has_many :voters, through: :votes, class_name: "User", source: :user
 
