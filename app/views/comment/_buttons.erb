@@ -1,0 +1,9 @@
+<% if current_user %>
+  <div class="comment_buttons">
+    <form action="/comment/<%= comment.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input class="fa fa-camera-retro" type="submit" value="delete">
+    </form>
+    <a href="/comment/<%= comment.id %>/edit">edit</a>
+  </div>
+<% end %>

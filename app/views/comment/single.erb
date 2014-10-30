@@ -9,16 +9,10 @@
   <% end %>
   </h4>
   <div>
-    <div class="comment_buttons">
-    <form action="/comment/<%= comment.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input class="fa fa-camera-retro" type="submit" value="Delete">
-    </form>
-    <a href="/comment/<%= comment.id %>/edit">Edit</a>
-    </div>
-  <p><%= comment.text %></p>
-  <p>written by <%= comment.username %></p>
-  <div>
+    <%= erb :'comment/_buttons', locals: {comment: comment} %>
+    <p><%= comment.text %></p>
+    <p>written by <%= comment.username %></p>
+  </div>
 
   <% unless comment.children.empty? %>
   <ol class="children">
