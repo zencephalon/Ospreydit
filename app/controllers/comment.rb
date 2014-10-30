@@ -14,9 +14,14 @@ get '/comment/:id' do |id|
 end
 
 post '/comment' do
-  Comment.create(params[:comment])
+  if current_user
+    params[:comment][:user_id] = current_user.id
+    Comment.create(params[:comment])
 
-  redirect to("/sub/#{params[:comment][:sub_id]}")
+    redirect to("/sub/#{params[:comment][:sub_id]}")
+  else
+    "GET OUT OF MY HOUSE"
+  end
 end
 
 delete '/comment/:id' do |id|
