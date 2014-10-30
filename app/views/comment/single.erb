@@ -11,7 +11,7 @@
   <div>
     <%= erb :'comment/_buttons', locals: {comment: comment} %>
     <p><%= comment.text %></p>
-    <p>written by <%= comment.user.name %></p>
+    <p>written by <%= comment.user.try(:name) %></p>
   </div>
 
   <% unless comment.children.empty? %>
