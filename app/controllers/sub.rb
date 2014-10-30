@@ -8,7 +8,7 @@ get '/subs' do
 end
 
 get '/sub/:id' do |id|
-  @comments = @sub.comments
+  @comments = @sub.top_level_comments
   erb :'comment/all'
 end
 
