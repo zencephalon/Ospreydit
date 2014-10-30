@@ -38,10 +38,9 @@ end
 
 # Voting!
 post '/comment/:id/vote', auth: :user do |id|
-  error = ""
   unless @comment.vote(current_user)
-    error = "U've already voted on this, cheater."
+    set_error "U've already voted on this, cheater."
   end
 
-  redirect to("/comment/#{@comment.id}?error=#{error}")
+  redirect to("/comment/#{@comment.id}")
 end

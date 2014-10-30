@@ -13,7 +13,8 @@ post '/login' do
     session[:user_id] = user.id
     redirect to('/')
   else
-    redirect to ('/login?error=Username or password incorrect')
+    set_error "Username or password incorrect"
+    redirect to ('/login')
   end
 end
 
@@ -33,6 +34,7 @@ post '/signup' do
     session[:user_id] = user.id
     redirect to('/')
   else
-    redirect to ("/signup?error=Passwords do not match&name=#{params[:user][:name]}")
+    set_error "Passwords do not match"
+    redirect to ("/signup?name=#{params[:user][:name]}")
   end
 end
