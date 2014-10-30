@@ -37,6 +37,14 @@ configure do
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
+
+  register do
+    def auth (type)
+      condition do
+        redirect "/login" unless send("current_#{type}")
+      end
+    end
+  end
 end
 
 # Set up the controllers and helpers
