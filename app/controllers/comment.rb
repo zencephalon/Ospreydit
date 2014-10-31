@@ -31,7 +31,11 @@ get '/comment/:id/edit', auth: :user do |id|
 end
 
 put '/comment/:id', auth: :user do |id|
-  @comment.update(params[:comment])
+  if current_user.may_edit(@comment)
+    @comment.update(params[:comment])
+  else
+    set_error("U may not edit this.")
+  end
 
   redirect to("/comment/#{id}")
 end
