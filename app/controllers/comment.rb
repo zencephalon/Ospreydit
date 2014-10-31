@@ -27,6 +27,7 @@ delete '/comment/:id', auth: :user do |id|
 end
 
 get '/comment/:id/edit', auth: :user do |id|
+  redirect to '/subs' unless current_user.may_edit(@comment)
   erb :'comment/_update_form', locals: {comment: @comment}
 end
 

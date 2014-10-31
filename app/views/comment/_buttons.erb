@@ -1,8 +1,8 @@
-<% if current_user %>
+<% if current_user && current_user.may_edit(comment) %>
   <div class="comment_buttons">
     <form action="/comment/<%= comment.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input class="fa fa-camera-retro" type="submit" value="delete">
+      <input class="delete_btn" type="submit" value="delete">
     </form>
     <a href="/comment/<%= comment.id %>/edit">edit</a>
   </div>
