@@ -13,13 +13,17 @@
     <p>written by <%= comment.user.try(:name) %></p>
   </div>
 
-  <a href="/comments/new?parent_id=<%= comment.id %>&sub_id=<%= comment.sub.id %>" >Reply</a>
+  <div class='reply_box'>
+  <%= erb :'comment/_new_form', locals: {parent_id: comment.id, sub: comment.sub} %>
+  </div>
 
-  <% unless comment.children.empty? %>
+  <a href="/comments/new?parent_id=<%= comment.id %>&sub_id=<%= comment.sub.id %>" class="reply_link">Reply</a>
+
   <ol class="children">
-    <% comment.children.each do |child| %>
-      <li><%= erb :'/comment/single', locals: {comment: child} %></li>
+    <% unless comment.children.empty? %>
+      <% comment.children.each do |child| %>
+        <li><%= erb :'/comment/single', locals: {comment: child} %></li>
+      <% end %>
     <% end %>
   </ol>
-  <% end %>
 </div>

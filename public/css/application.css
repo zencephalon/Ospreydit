@@ -74,3 +74,7 @@ code {
 .comment_buttons {
     float: right;
 }
+
+.reply_box {
+    display: none;
+}
