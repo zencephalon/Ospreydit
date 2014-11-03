@@ -4,6 +4,10 @@
   end
 end
 
+get '/comments/new' do
+  erb :'comment/_new_form', locals: {parent_id: params[:parent_id], sub: Sub.find(params[:sub_id])}
+end
+
 get '/comments' do
   @comments = Comment.all
   erb :'comment/all'

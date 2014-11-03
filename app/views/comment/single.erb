@@ -13,6 +13,8 @@
     <p>written by <%= comment.user.try(:name) %></p>
   </div>
 
+  <a href="/comments/new?parent_id=<%= comment.id %>&sub_id=<%= comment.sub.id %>" >Reply</a>
+
   <% unless comment.children.empty? %>
   <ol class="children">
     <% comment.children.each do |child| %>

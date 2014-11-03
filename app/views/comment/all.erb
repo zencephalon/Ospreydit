@@ -3,5 +3,5 @@
 <% end %>
 
 <% if @sub %>
-<%= erb :'comment/_new_form', locals: {sub: @sub} %>
+<%= erb :'comment/_new_form', locals: {sub: @sub, parent_id: nil} %>
 <% end %>
