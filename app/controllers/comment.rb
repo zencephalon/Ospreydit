@@ -31,7 +31,11 @@ end
 delete '/comment/:id', auth: :user do |id|
   @comment.destroy
 
-  redirect to('/comments')
+  if request.xhr?
+    return {deleted: true}.to_json
+  else
+    redirect to('/comments')
+  end
 end
 
 get '/comment/:id/edit', auth: :user do |id|
