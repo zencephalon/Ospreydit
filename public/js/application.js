@@ -3,13 +3,13 @@ $(document).ready(function() {
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
 
-  $('.reply_link').click(function(event) {
+  $('#comment_container').on('click', '.reply_link', function(event) {
     event.preventDefault();
     $(event.target).parent().children('.reply_box').show();
     $(event.target).remove();
   });
 
-  $('.comment_form').submit(function(event) {
+  $('#comment_container').on('submit', '.comment_form', function(event) {
     event.preventDefault();
     console.log(event.target);
     $form = $(event.target);
@@ -23,7 +23,7 @@ $(document).ready(function() {
     });
   })
 
-  $('.vote_btn').click(function(event) {
+  $('#comment_container').on('click', '.vote_btn', function(event) {
     event.preventDefault();
     $target = $(event.target);
     $target.val("Voting...");
@@ -40,7 +40,7 @@ $(document).ready(function() {
     });
   })
 
-  $('.delete_btn').click(function(event) {
+  $('#comment_container').on('click', '.delete_btn', function(event) {
     event.preventDefault();
     $target = $(event.target);
     $target.val("Deleting...");

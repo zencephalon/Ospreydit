@@ -1,6 +1,8 @@
+<div id="comment_container">
 <% @comments.each do |comment| %>
   <%= erb :'comment/single', locals: {comment: comment} %>
 <% end %>
+</div>
 
 <% if @sub %>
 <%= erb :'comment/_new_form', locals: {sub: @sub, parent_id: nil} %>
