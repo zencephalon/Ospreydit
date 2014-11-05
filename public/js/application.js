@@ -23,6 +23,23 @@ $(document).ready(function() {
     });
   })
 
+  $('.vote_btn').click(function(event) {
+    event.preventDefault();
+    $target = $(event.target);
+    $target.val("Voting...");
+    $target.attr("disabled", "true");
+    $form = $target.parent();
+
+    $.ajax({
+      type: $form.attr('method'),
+      url: $form.attr('action'),
+      dataType: "JSON"
+    }).done(function (response) {
+      $form.parent().children('.score_display').html(response.score);
+      $target.val("Voted");
+    });
+  })
+
   $('.delete_btn').click(function(event) {
     event.preventDefault();
     $target = $(event.target);

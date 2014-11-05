@@ -1,9 +1,9 @@
 <div class="comment">
   <h4><%= comment.id %>
-  score: <%= comment.score %>
+  score: <div class="score_display"><%= comment.score %></div>
   <% if current_user %>
   <form action="/comment/<%= comment.id %>/vote" method="POST">
-    <input type="submit" value="Vote!">
+    <input type="submit" class="vote_btn" value="Vote!">
   </form>
   <% end %>
   </h4>

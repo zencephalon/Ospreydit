@@ -55,5 +55,9 @@ post '/comment/:id/vote', auth: :user do |id|
     set_error "U've already voted on this, cheater."
   end
 
-  redirect to("/comment/#{@comment.id}")
+  if request.xhr?
+    return {score: @comment.score}.to_json
+  else
+    redirect to("/comment/#{@comment.id}")
+  end
 end
