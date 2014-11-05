@@ -3,6 +3,8 @@ $(document).ready(function() {
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
 
+  // pre-refactoring
+  // $('.reply_link').click(function() { ... });
   $('#comment_container').on('click', '.reply_link', function(event) {
     event.preventDefault();
     $(event.target).parent().children('.reply_box').show();
