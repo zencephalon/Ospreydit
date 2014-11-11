@@ -50,7 +50,11 @@ put '/comment/:id', auth: :user do |id|
     set_error("U may not edit this.")
   end
 
-  redirect to("/comment/#{id}")
+  if request.xhr?
+    return {comment_text: @comment.text}.to_json
+  else
+    redirect to("/comment/#{id}")
+  end
 end
 
 # Voting!

@@ -1,12 +1,30 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+
   $('#comment_container').on('click', '.edit_btn', function(event) {
     event.preventDefault();
     $target = $(event.target);
-    $target.closest('.comment').children('.edit_box').show();
+    $comment = $target.closest('.comment');
+    $comment.children('.edit_box').show();
+    $comment.children('.comment_content').hide();
   });
+
+  $('#comment_container').on('submit', '.edit_box .comment_form', function(event) {
+    event.preventDefault();
+    $target = $(event.target);
+    $comment_content = $target.closest('.comment').find('.comment_content').first();
+
+    $.ajax({
+      url: $target.attr("action"),
+      type: $target.attr("method"),
+      data: $target.serialize(),
+      dataType: "JSON"
+    }).done(function(response) {
+      $comment_content.children('.comment_text').html(response.comment_text);
+      $comment_content.show();
+      $target.parent().hide();
+    });
+  });
+
   // pre-refactoring
   // $('.reply_link').click(function() { ... });
   $('#comment_container').on('click', '.reply_link', function(event) {

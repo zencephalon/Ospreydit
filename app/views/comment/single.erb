@@ -7,9 +7,9 @@
   </form>
   <% end %>
   </h4>
-  <div>
+  <div class='comment_content'>
     <%= erb :'comment/_buttons', locals: {comment: comment} %>
-    <p><%= comment.text %></p>
+    <p class="comment_text"><%= comment.text %></p>
     <p>written by <%= comment.user.try(:name) %></p>
   </div>
 
