@@ -13,6 +13,12 @@
     <p>written by <%= comment.user.try(:name) %></p>
   </div>
 
+  <% if user_can_edit? comment %>
+    <div class='edit_box'>
+      <%= erb :'comment/_update_form', locals: {comment: comment} %>
+    </div>
+  <% end %>
+
   <div class='reply_box'>
   <%= erb :'comment/_new_form', locals: {parent_id: comment.id, sub: comment.sub} %>
   </div>
