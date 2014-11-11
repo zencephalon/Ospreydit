@@ -2,7 +2,11 @@ $(document).ready(function() {
   // This is called after the document has loaded in its entirety
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
-
+  $('#comment_container').on('click', '.edit_btn', function(event) {
+    event.preventDefault();
+    $target = $(event.target);
+    $target.closest('.comment').children('.edit_box').show();
+  });
   // pre-refactoring
   // $('.reply_link').click(function() { ... });
   $('#comment_container').on('click', '.reply_link', function(event) {
@@ -11,7 +15,7 @@ $(document).ready(function() {
     $(event.target).remove();
   });
 
-  $('#comment_container').on('submit', '.comment_form', function(event) {
+  $('#comment_container').on('submit', '.reply_box .comment_form', function(event) {
     event.preventDefault();
     console.log(event.target);
     $form = $(event.target);

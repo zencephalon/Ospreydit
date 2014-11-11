@@ -78,3 +78,7 @@ code {
 .reply_box {
     display: none;
 }
+
+.edit_box {
+    display: none;
+}
