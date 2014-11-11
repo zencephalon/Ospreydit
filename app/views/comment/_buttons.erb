@@ -1,4 +1,4 @@
-<% if current_user && current_user.may_edit(comment) %>
+<% if user_can_edit? comment %>
   <div class="comment_buttons">
     <form action="/comment/<%= comment.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
