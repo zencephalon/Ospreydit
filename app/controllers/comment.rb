@@ -19,9 +19,13 @@ end
 
 post '/comment', auth: :user do
   params[:comment][:user_id] = current_user.id
-  Comment.create(params[:comment])
+  comment = Comment.create(params[:comment])
 
-  redirect to("/sub/#{params[:comment][:sub_id]}")
+  if request.xhr?
+    erb :'comment/single', locals: {comment: comment}, layout: false
+  else
+    redirect to("/sub/#{params[:comment][:sub_id]}")
+  end
 end
 
 delete '/comment/:id', auth: :user do |id|

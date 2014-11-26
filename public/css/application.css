@@ -51,6 +51,7 @@ a:hover {
 .comment_form {
     border: 1px black solid;
     padding: 10px;
+    display: none;
 }
 
 code {
