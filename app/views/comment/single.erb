@@ -12,10 +12,15 @@
     <p><%= comment.text %></p>
     <p>written by <%= comment.user.try(:name) %></p>
   </div>
+  <div class="edit_form">
+  <%= erb :'comment/_update_form', locals: {comment: comment} %>
+  </div>
 
   <a href="/comments/new?parent_id=<%= comment.id %>&sub_id=<%= comment.sub.id %>" class="reply_link">Reply</a>
 
+  <div class="reply_form">
   <%= erb :'comment/_new_form', locals: {sub: comment.sub, parent_id: comment.id} %>
+  </div>
 
   <ol class="children">
     <% comment.children.each do |child| %>

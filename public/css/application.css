@@ -51,6 +51,13 @@ a:hover {
 .comment_form {
     border: 1px black solid;
     padding: 10px;
+}
+
+.reply_form {
+    display: none;
+}
+
+.edit_form {
     display: none;
 }
 
