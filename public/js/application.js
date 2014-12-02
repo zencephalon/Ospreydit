@@ -3,6 +3,7 @@ $(document).ready(function() {
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
 
+  // Reply link
   $('#content').on('click', '.reply_link', function(event) {
     event.preventDefault();
     var $target = $(event.target);
@@ -11,9 +12,28 @@ $(document).ready(function() {
     $target.parent().children('.comment_form').show(); 
   })
 
-  // $('.reply_link').click(function(event) {
-   
-  // });
+  // Edit link
+  $('#content').on('click', '.edit_link', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+ 
+    $target.closest('.comment').children('.edit_form').show();
+  })
+
+  $('#content').on('submit', '.update_form form', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    var $comment = $target.closest('.comment');
+    $.ajax({
+      url: $target.attr('action'),
+      method: 'PUT',
+      data: $target.serialize(),
+      dataType: 'JSON'
+    }).done(function(response) {
+      $comment.find('.comment_content').first().text(response.text);
+      $comment.children('.edit_form').hide();
+    })
+  })
 
   $('#content').on('submit', '.comment_form form', function(event) {
     event.preventDefault();

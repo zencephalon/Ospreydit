@@ -1,4 +1,4 @@
-<div class="comment_form">
+<div class="update_form">
   <form action="/comment/<%= comment.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT">
     <%= erb :'comment/_form_inputs', locals: {comment: comment} %>
